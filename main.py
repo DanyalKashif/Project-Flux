@@ -103,8 +103,6 @@ def check_drive_usage(path):
 def deliver_flux_message(used_percent):
         if used_percent is None:
             return
-
-        print("\n--- FLUX SAYS ---")
         
         # --- The Flux Personality Core ---
 
@@ -135,7 +133,7 @@ def check_all_drives_dynamic(drives_map):
         #Dynamically checks all drives and reports their status using the existing functions.
         
         print("\n-------------------------------------------")
-        print(f"🧠 {Fore.BLUE}FLUX DYNAMIC DRIVE SCAN STARTED{Style.RESET_ALL}")
+        print(f"🧠 {Fore.GREEN}FLUX DYNAMIC DRIVE SCAN STARTED{Style.RESET_ALL}")
         
         # psutil.disk_partitions() gives us a list of all detected partitions (drives)
         for partition in psutil.disk_partitions(all=False):
@@ -149,12 +147,12 @@ def check_all_drives_dynamic(drives_map):
                 if Percent is not None:
                     drive_nickname = drives_map.get(drive_path, f"DRIVE ({drive_path})")
                     
-                    print(f"\n--- {drive_nickname} ---")
+                    print(f"\n--- {Fore.YELLOW}{drive_nickname}{Style.RESET_ALL} ---")
                     print(f"[Total: {Total} GB | Used: {Used} GB | Free: {Free} GB]")
                     deliver_flux_message(Percent)
         
         print("\n-------------------------------------------")
-        print("✅ FLUX DYNAMIC DRIVE SCAN COMPLETE")
+        print(f"✅ {Fore.GREEN}FLUX DYNAMIC DRIVE SCAN COMPLETE{Style.RESET_ALL}")
 
 def process_command(user_input, DRIVES_MAP):
 
@@ -183,7 +181,7 @@ def process_command(user_input, DRIVES_MAP):
             Total, Used, Free, Percent = check_drive_usage(drive_path)
             if Percent is not None:
                 print("\n-------------------------------------------")
-                print(f"{Fore.BLUE}Scanning {drive_path}...{Style.RESET_ALL}")
+                print(f"{Fore.GREEN}Scanning {drive_path}...{Style.RESET_ALL}")
                 print(f"Total: {Total} GB | Used: {Used} GB | Free: {Free} GB")
                 deliver_flux_message(Percent)
 
@@ -192,7 +190,7 @@ def process_command(user_input, DRIVES_MAP):
             Total, Used, Free, Percent = check_drive_usage(drive_path)
             if Percent is not None:
                 print("\n-------------------------------------------")
-                print(f"{Fore.BLUE}Scanning {drive_path}...{Style.RESET_ALL}")
+                print(f"{Fore.GREEN}Scanning {drive_path}...{Style.RESET_ALL}")
                 print(f"Total: {Total} GB | Used: {Used} GB | Free: {Free} GB")
                 deliver_flux_message(Percent)
 
@@ -201,7 +199,7 @@ def process_command(user_input, DRIVES_MAP):
             Total, Used, Free, Percent = check_drive_usage(drive_path)
             if Percent is not None:
                 print("\n-------------------------------------------")
-                print(f"{Fore.BLUE}Scanning {drive_path}...{Style.RESET_ALL}")
+                print(f"{Fore.GREEN}Scanning {drive_path}...{Style.RESET_ALL}")
                 print(f"Total: {Total} GB | Used: {Used} GB | Free: {Free} GB")
                 deliver_flux_message(Percent)
         
